@@ -1,0 +1,836 @@
+{
+  "/saved-sql": {
+    "get": {
+      "x-mojo-to": "Xyz::Paulderscheid::SavedSQLAPI::Controllers::SavedSQL#list",
+      "summary": "Get all saved SQL queries",
+      "description": "Retrieve a list of all saved SQL queries",
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "A list of saved SQL queries",
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "borrowernumber": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "example": 123
+                },
+                "date_created": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time",
+                  "example": "2023-06-08T14:00:00Z"
+                },
+                "last_modified": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time",
+                  "example": "2023-06-08T15:00:00Z"
+                },
+                "savedsql": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "SELECT * FROM biblio"
+                },
+                "last_run": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "format": "date-time",
+                  "example": "2023-06-08T16:00:00Z"
+                },
+                "report_name": {
+                  "type": "string",
+                  "example": "Items Search Fields"
+                },
+                "type": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "1"
+                },
+                "notes": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "This is a sample report"
+                },
+                "cache_expiry": {
+                  "type": "integer",
+                  "example": 300
+                },
+                "public": {
+                  "type": "boolean",
+                  "example": false
+                },
+                "report_area": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "Circulation"
+                },
+                "report_group": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "Group1"
+                },
+                "report_subgroup": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "example": "SubgroupA"
+                },
+                "mana_id": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "example": 456
+                }
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "An error occured",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "post": {
+      "x-mojo-to": "Xyz::Paulderscheid::SavedSQLAPI::Controllers::SavedSQL#post",
+      "summary": "Create a new saved SQL query",
+      "description": "Save a new SQL query",
+      "parameters": [
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "borrowernumber": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 123
+              },
+              "date_created": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T14:00:00Z"
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T15:00:00Z"
+              },
+              "savedsql": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SELECT * FROM biblio"
+              },
+              "last_run": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T16:00:00Z"
+              },
+              "report_name": {
+                "type": "string",
+                "example": "Items Search Fields"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "1"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "This is a sample report"
+              },
+              "cache_expiry": {
+                "type": "integer",
+                "example": 300
+              },
+              "public": {
+                "type": "boolean",
+                "example": false
+              },
+              "report_area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Circulation"
+              },
+              "report_group": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Group1"
+              },
+              "report_subgroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SubgroupA"
+              },
+              "mana_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 456
+              }
+            }
+          }
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "201": {
+          "description": "Saved SQL query created successfully",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "borrowernumber": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 123
+              },
+              "date_created": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T14:00:00Z"
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T15:00:00Z"
+              },
+              "savedsql": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SELECT * FROM biblio"
+              },
+              "last_run": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T16:00:00Z"
+              },
+              "report_name": {
+                "type": "string",
+                "example": "Items Search Fields"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "1"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "This is a sample report"
+              },
+              "cache_expiry": {
+                "type": "integer",
+                "example": 300
+              },
+              "public": {
+                "type": "boolean",
+                "example": false
+              },
+              "report_area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Circulation"
+              },
+              "report_group": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Group1"
+              },
+              "report_subgroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SubgroupA"
+              },
+              "mana_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 456
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "The object was not found",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  },
+  "/saved-sql/{id}": {
+    "get": {
+      "x-mojo-to": "Xyz::Paulderscheid::SavedSQLAPI::Controllers::SavedSQL#get",
+      "summary": "Get a saved SQL query by ID",
+      "description": "Retrieve a saved SQL query by its ID",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "A saved SQL query",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "borrowernumber": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 123
+              },
+              "date_created": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T14:00:00Z"
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T15:00:00Z"
+              },
+              "savedsql": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SELECT * FROM biblio"
+              },
+              "last_run": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T16:00:00Z"
+              },
+              "report_name": {
+                "type": "string",
+                "example": "Items Search Fields"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "1"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "This is a sample report"
+              },
+              "cache_expiry": {
+                "type": "integer",
+                "example": 300
+              },
+              "public": {
+                "type": "boolean",
+                "example": false
+              },
+              "report_area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Circulation"
+              },
+              "report_group": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Group1"
+              },
+              "report_subgroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SubgroupA"
+              },
+              "mana_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 456
+              }
+            }
+          }
+        },
+        "404": {
+          "description": "The object was not found",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    "put": {
+      "x-mojo-to": "Xyz::Paulderscheid::SavedSQLAPI::Controllers::SavedSQL#put",
+      "summary": "Update a saved SQL query by ID",
+      "description": "Update the details of an existing saved SQL query",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "borrowernumber": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 123
+              },
+              "date_created": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T14:00:00Z"
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T15:00:00Z"
+              },
+              "savedsql": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SELECT * FROM biblio"
+              },
+              "last_run": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T16:00:00Z"
+              },
+              "report_name": {
+                "type": "string",
+                "example": "Items Search Fields"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "1"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "This is a sample report"
+              },
+              "cache_expiry": {
+                "type": "integer",
+                "example": 300
+              },
+              "public": {
+                "type": "boolean",
+                "example": false
+              },
+              "report_area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Circulation"
+              },
+              "report_group": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Group1"
+              },
+              "report_subgroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SubgroupA"
+              },
+              "mana_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 456
+              }
+            }
+          }
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "200": {
+          "description": "Saved SQL query updated successfully",
+          "schema": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer",
+                "example": 1
+              },
+              "borrowernumber": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 123
+              },
+              "date_created": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T14:00:00Z"
+              },
+              "last_modified": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T15:00:00Z"
+              },
+              "savedsql": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SELECT * FROM biblio"
+              },
+              "last_run": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "format": "date-time",
+                "example": "2023-06-08T16:00:00Z"
+              },
+              "report_name": {
+                "type": "string",
+                "example": "Items Search Fields"
+              },
+              "type": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "1"
+              },
+              "notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "This is a sample report"
+              },
+              "cache_expiry": {
+                "type": "integer",
+                "example": 300
+              },
+              "public": {
+                "type": "boolean",
+                "example": false
+              },
+              "report_area": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Circulation"
+              },
+              "report_group": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "Group1"
+              },
+              "report_subgroup": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "example": "SubgroupA"
+              },
+              "mana_id": {
+                "type": [
+                  "integer",
+                  "null"
+                ],
+                "example": 456
+              }
+            }
+          }
+        },
+        "400": {
+          "description": "Bad request",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "404": {
+          "description": "The object was not found",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    },
+    "delete": {
+      "x-mojo-to": "Xyz::Paulderscheid::SavedSQLAPI::Controllers::SavedSQL#delete",
+      "summary": "Delete a saved SQL query by ID",
+      "description": "Remove a saved SQL query by its ID",
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "responses": {
+        "204": {
+          "description": "Saved SQL query deleted successfully"
+        },
+        "404": {
+          "description": "The object was not found",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        },
+        "500": {
+          "description": "Internal server error",
+          "schema": {
+            "properties": {
+              "error": {
+                "description": "An explanation for the error",
+                "type": "string"
+              }
+            },
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}
