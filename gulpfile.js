@@ -124,7 +124,7 @@ gulp.task('static', ()=>{
     }
 });
 
-gulp.task('build', ['static'], () => {
+gulp.task('build', [], () => {
     run(`
         mkdir dist ;
         cp -r Koha dist/. ;
