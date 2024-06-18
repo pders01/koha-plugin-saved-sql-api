@@ -1,8 +1,8 @@
 {
-  "name": "koha-plugin-kitchen-sink",
-  "version": "2.1.30",
-  "previous_version": "2.1.29",
-  "description": "Koha Kitchen Sink Plugin",
+  "name": "koha-plugin-saved-sql-api",
+  "version": "0.0.1",
+  "previous_version": "0.0.0",
+  "description": "Koha Plugin Saved SQL API",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
